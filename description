@@ -1,0 +1,13 @@
+here we create a mock bank where each user has an associated balance the bank should be able to give out notification when there
+is a successful transaction to notify the user of it.
+
+first an object is created to represent the bank user with the following fields user's fullname banking password , and unque account number,
+
+then a send function that can be called by the user ,
+ and a receive function that listens for send function calls
+the receive function is such that it is capable of sending a notification via websockets which the consumer(frontend or mock payment server) consumes
+the mock payment server receives this notification verifies it's  and
+return a value with of { status : "error or success", transactionId : "", hex: "" , timestamp: "", protocol_signature : ""  }
+if the status is successful the protocol performs a check to see if the transaction was signed by the protocol and if
+hex exist already if it does not then the transaction goes through and all other
+transaction with the same hex reverts to avoid double spending.
